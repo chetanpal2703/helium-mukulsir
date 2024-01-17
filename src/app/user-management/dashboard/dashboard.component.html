@@ -1,0 +1,54 @@
+<app-side-nav></app-side-nav>
+<div class="navleftspace">
+    <h1 >Dashboard</h1>
+    <div class="main-cards">
+        <div class="example-card">
+            <div><img  src="../../../assets/images/camp-organized.svg" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.camp_organized}}</h2>
+            <p>Total Number of Camps Organized</p>
+            </div>
+        </div>
+        <div class="example-card ">
+            <div><img  src="../../../assets/images/registered-users.svg" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.registered_users}}</h2>
+            <p>Total Number of Registered Users</p>
+            </div>
+        </div>
+        <div class="example-card ">
+            <div><img  src="../../../assets/images/partners-client.svg" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.client}}</h2>
+            <p>Partners/Clients</p>
+            </div>
+        </div>
+        <div class="example-card ">
+            <div><img  src="../../../assets/images/abha-created.svg" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.abha_created}}</h2>
+            <p>Total Number of Abha ID Created</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-cards">
+        <div class="example-card ">
+            <div><img  src="../../../assets/images/patientregisterperhour.png" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.patient_register_per_hour}}</h2>
+            <p>Patients Registered Per Hour</p>
+            </div>
+        </div>
+        <div class="example-card ">
+            <div><img  src="../../../assets/images/highandlowriskcase.png" alt="Your Image"></div>
+            <div class="card-text">
+            <h2>{{dashboarddata?.data?.unhealthy}}</h2>
+            <p>High And Low Risk Case</p>
+            </div>
+        </div>
+      
+    </div>
+    
+</div>

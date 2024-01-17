@@ -1,0 +1,35 @@
+<app-side-nav></app-side-nav>
+<div class="navleftspace">
+  <!-- your-component.component.html -->
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name">
+      <div *ngIf="form.get('name').hasError('required') && form.get('name').touched">
+        Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="form.get('email').hasError('required') && form.get('email').touched">
+        Email is required.
+      </div>
+      <div *ngIf="form.get('email').hasError('email') && form.get('email').touched">
+        Please enter a valid email address.
+      </div>
+    </div>
+    <div>
+        <label for="mobile">Mobile</label>
+        <input type="tel" id="mobile" formControlName="mobile" maxlength="10">
+        <div *ngIf="form.get('mobile').hasError('required') && form.get('mobile').touched">
+          Mobile is required.
+        </div>
+        <div *ngIf="form.get('mobile').hasError('pattern') && form.get('mobile').touched">
+          Please enter a valid 10-digit mobile number.
+        </div>
+    </div>
+    <button type="submit" >Submit</button>
+  </form>
+</div>

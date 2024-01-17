@@ -1,0 +1,64 @@
+table {
+    width: 100%;
+}
+
+.logo-dashboard img{
+    max-width:  200px;
+    text-align: center;
+  }
+  .dashboard-heading{
+    color: #393939;
+}
+.dashboardhead{
+  display: flex;
+  padding: 10px 5px;
+}
+.dashboardhead img{
+  width: 30px;
+  height: 20px;
+  text-align: center;
+  align-items: center;
+}
+.dashboardhead a{
+  text-decoration: none;
+  color: #393939;
+  font-weight: 600;
+  font-size: 15px;
+}  
+.dashboardhead span{
+  margin-left: 20px;
+}
+  /* src/app/app.component.css */
+  
+.sidenav-container{
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+}
+  
+.sidenav {
+    width: 250px; /* Set the initial width of the sidebar */
+}
+  
+.sidenav-toolbar {
+    justify-content: center;
+}
+  
+.main-content {
+    margin-left: 250px; /* Set the initial margin for the main content */
+}
+  
+.content {
+    padding: 16px;
+}
+  
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .sidenav {
+      width: 0;
+    }
+  
+    .main-content {
+      margin-left: 0;
+    }
+}

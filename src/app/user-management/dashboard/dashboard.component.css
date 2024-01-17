@@ -1,0 +1,37 @@
+.cardsmatme{
+    display: flex;
+}
+/* your-component.component.css */
+
+.example-card {
+    display: flex;
+    max-width: 250px;
+    margin: 0px;
+    border: 1px solid white;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-right: 20px;
+  }
+  .example-card h2{
+    right: 0;
+    top: 0;
+    margin: 0px;
+    padding-left: 78px;
+  }
+  
+  .mat-card-image {
+    width: 30%; /* Adjust the image width */
+    object-fit: cover; /* Maintain aspect ratio for the image */
+  }
+  
+  .card-text {
+    /* padding: 16px; */
+    box-sizing: border-box;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .main-cards{
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
