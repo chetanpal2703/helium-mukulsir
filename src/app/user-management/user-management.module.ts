@@ -13,6 +13,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationPipe } from './pagination.pipe';
 import {MatButtonModule} from '@angular/material/button';
 import { AddsubadminComponent } from './addsubadmin/addsubadmin.component';
+import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +25,7 @@ import { AddsubadminComponent } from './addsubadmin/addsubadmin.component';
     RegistrationstaffComponent,
     PaginationPipe,
     AddsubadminComponent,
+    PopupcomponentComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { AddsubadminComponent } from './addsubadmin/addsubadmin.component';
     MatTableModule,
     NgxPaginationModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    FormsModule
   ]
 })
 export class UserManagementModule { }

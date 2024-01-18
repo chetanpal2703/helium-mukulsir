@@ -57,5 +57,19 @@ export class CommonServiceService {
   //     .set('created_by', createdBy);
   //   return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/get_user_list', { params });
   // }
+  addSubadminData(){
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/role_access_list/')
+  }
+
+  addRoleToSubadmin(payload:any){
+    return this.http.post('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/add_user/',payload)
+  }
+  getRoleToSubadmin(page:number,rolesId:number,createdBy:string):Observable<any>{
+    const params=new HttpParams()
+    .set('roles_id',rolesId.toString())
+    .set('page_size',page.toString())
+    .set('created_by',createdBy);
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/get_user_list',{params})
+  }
   
 }

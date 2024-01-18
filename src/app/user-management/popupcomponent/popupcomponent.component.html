@@ -1,0 +1,75 @@
+<!-- <p>popupcomponent works!</p>
+<h2>Select an Option</h2>
+<form>
+  <div *ngFor="let option of selectOptions">
+    <label>
+      <input type="checkbox" [value]="option.id" > {{ option.name }}
+      <div *ngFor="let data of option.sub_module">
+        <label >
+            <input type="checkbox" value="">{{data.name}}
+        </label>
+      </div>
+    </label>
+  </div>
+</form> -->
+<!-- <button mat-button [mat-dialog-close]="selectedOptions()">Close</button> -->
+<!-- <button mat-button [mat-dialog-close]="'close'">Close</button> -->
+
+<!-- <p>popupcomponent works!</p>
+<h2>Select an Option</h2>
+<form >
+  <div *ngFor="let option of selectOptions">
+    <label>
+      <input type="checkbox" [value]="option.id" > {{ option.name }}
+    </label>
+
+    <div *ngIf="option.sub_module && option.sub_module.length > 0">
+      <div *ngFor="let data of option.sub_module" [ngClass]="{'child-option': true}">
+        <label>
+          <input type="checkbox" [value]="data.id"> {{ data.name }}
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
+<button mat-button [mat-dialog-close]="'close'">Close</button> -->
+
+<!-- <p>popupcomponent works!</p>
+<h2>Select an Option</h2>
+<form (ngSubmit)="onSave()">
+  <div *ngFor="let option of selectOptions">
+    <label>
+      <input type="checkbox" [value]="option.id" [(ngModel)]="selectedOptions[option.id]"> {{ option.name }}
+    </label>
+
+    <div *ngIf="option.sub_module && option.sub_module.length > 0">
+      <div *ngFor="let data of option.sub_module" [ngClass]="{'child-option': true}">
+        <label>
+          <input type="checkbox" [value]="data.id" [(ngModel)]="selectedOptions[data.id]"> {{ data.name }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <button mat-button type="submit">Save</button>
+</form>
+<button mat-button [mat-dialog-close]="'close'">Close</button> -->
+
+<p>popupcomponent works!</p>
+<h2>Select an Option</h2>
+<form (ngSubmit)="onSave()">
+  <div *ngFor="let option of selectOptions">
+    <label>
+      <input type="checkbox" [value]="option.id" [(ngModel)]="selectedOptions[option.id]" name="mainOption"> {{ option.name }}
+    </label>
+
+    <div *ngIf="option.sub_module && option.sub_module.length > 0">
+      <div *ngFor="let data of option.sub_module" [ngClass]="{'child-option': true}">
+        <label>
+          <input type="checkbox" [value]="data.id" [(ngModel)]="selectedOptions[data.id]" name="subOption"> {{ data.name }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <button mat-button type="submit">Save</button>
+</form>
+<button mat-button [mat-dialog-close]="'close'">Close</button>

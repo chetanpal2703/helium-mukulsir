@@ -23,7 +23,7 @@ export class SubadminComponent implements AfterViewInit{
   }
   constructor(private commonservice:CommonServiceService,private route:Router){
     this.userInfo = JSON.parse(localStorage.getItem('userInfo')) ;
-    console.log("inside constructor of subdmin",this.userInfo)
+    console.log("inside constructor of subdmin",this.userInfo.id)
     this.commonservice.getSubAdminList(this.userInfo.id, 3, this.userInfo.role.toLowerCase()).subscribe(
             (response) => {
               console.log("hey we did it",response);
@@ -37,6 +37,8 @@ export class SubadminComponent implements AfterViewInit{
     );
   }
   redirectoaddsubadmin(){
+
+// https://campmanagementapidev.tsoft.co.in/v1/web_user_management/role_access_list/
     console.log("we are redirecting to addsubadmin page ")
     this.route.navigateByUrl('user/addsubadmin');
   }

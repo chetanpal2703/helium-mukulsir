@@ -3,6 +3,7 @@
   <!-- your-component.component.html -->
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                                                 <!-- name -->
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" formControlName="name">
@@ -10,6 +11,8 @@
         Name is required.
       </div>
     </div>
+
+                                              <!-- email -->
     <div>
       <label for="email">Email</label>
       <input type="email" id="email" formControlName="email">
@@ -20,6 +23,7 @@
         Please enter a valid email address.
       </div>
     </div>
+                                             <!-- mobile number -->
     <div>
         <label for="mobile">Mobile</label>
         <input type="tel" id="mobile" formControlName="mobile" maxlength="10">
@@ -30,6 +34,30 @@
           Please enter a valid 10-digit mobile number.
         </div>
     </div>
+
+
+                                             <!-- level -->
+    <div>
+      <label for="level">Level</label>
+      <select id="level" formControlName="level"  (change)="onLevelChange()">
+        <option value="" disabled selected> level</option>
+        <option value="state">State Level</option>
+        <option value="city">City Level</option>
+        <option value="camp">Camp Level</option>
+      </select>
+      <div *ngIf="form.get('level').hasError('required') && form.get('level').touched">
+        Level is required.
+      </div>
+    </div>
+    <div *ngIf="form.get('level').value === 'state'">
+      <label for="state">State</label>
+      <select id="state" formControlName="state">
+        <option value="" disabled selected>Select your state</option>
+        <option *ngFor="let state of indianStates" [value]="state">{{ state }}</option>
+      </select>
+    </div>
+    
     <button type="submit" >Submit</button>
   </form>
 </div>
+
