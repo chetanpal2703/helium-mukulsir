@@ -14,16 +14,27 @@ export class AddsubadminComponent {
   form: FormGroup;
   indianStates: string[] = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
   accessRoles: any;
-  role_accessbyme:any;
+  role_accessbyme:any={};
   payLoadToSend:any;
+  datawithselectedprop:any;
+  checkboxForm: FormGroup;
   constructor(private fb: FormBuilder,private commonservice:CommonServiceService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    
     this.role_accessbyme=[{module: 1, sub_module: [1, 2, 3, 4, 5, 6]}]
     this.commonservice.addSubadminData().subscribe((responce)=>{
       console.log("addsubadmindata",responce)
       this.accessRoles=responce;
-      
+      this.datawithselectedprop=responce;
+      this.datawithselectedprop.data.forEach((module) => {
+        module.selected = false; // Add selected property to module
+        if (module.sub_module) {
+          module.sub_module.forEach((subModule) => {
+            subModule.selected = false; // Add selected property to sub-module
+          });
+        }
+      });
     })
     this.form = this.fb.group({
       name: ['', [Validators.required]],
@@ -39,6 +50,7 @@ export class AddsubadminComponent {
     if (this.form.get('level').value !== 'state') {
       this.form.get('state').setValue('hi');
     }
+    console.log("selectedpropdata",this.datawithselectedprop)
   }
   onSubmit() {
     
@@ -73,7 +85,7 @@ export class AddsubadminComponent {
 
     // Pass any data needed for the popup (e.g., options for the select)
     dialogConfig.data = {
-      selectOptions: this.accessRoles.data
+      selectOptions: this.datawithselectedprop.data
     };
 
     // Open the popup
