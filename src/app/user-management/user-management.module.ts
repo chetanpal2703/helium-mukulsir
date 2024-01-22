@@ -38,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     ReactiveFormsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class UserManagementModule { }

@@ -77,16 +77,16 @@
 <button mat-button [mat-dialog-close]="'close'">Close</button> -->
 
 
-<form (ngSubmit)="onSave()">
+<form (ngSubmit)="onSave()" >
   <div *ngFor="let option of selectOptions">
     <label>
-      <input type="checkbox" [(ngModel)]="selectedData[option.name]" name="mainOption"> {{ option.name }}
+      <input type="checkbox" [name]="option.name"  (change)="togglecheckbox(option.id)"> {{ option.name }}
     </label>
 
     <div *ngIf="option.sub_module && option.sub_module.length > 0">
       <div *ngFor="let subOption of option.sub_module" [ngClass]="{'child-option': true}">
         <label>
-          <input type="checkbox" [value]="subOption.id" [(ngModel)]="selectedData[subOption.id]" name="subOption"> {{ subOption.name }}
+          <input type="checkbox" [(ngModel)]="subOption.selected" (change)="checkboxchange(option.id,subOption.selected)" [name]="subOption.name" > {{ subOption.name }}
         </label>
       </div>
     </div>
