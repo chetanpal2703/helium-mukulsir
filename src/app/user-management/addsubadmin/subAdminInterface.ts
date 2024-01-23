@@ -2,7 +2,7 @@ export class SubAdmin {
     name: string;
     email_id: string;
     mobile_number: string;
-    role_access: any;
+    role_access?:any[] = [];
     level: number=1;
     state: number=5;
     city: string="";

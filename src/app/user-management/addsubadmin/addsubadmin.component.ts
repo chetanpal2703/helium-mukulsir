@@ -4,6 +4,7 @@ import { CommonServiceService } from 'src/app/services/common-service.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopupcomponentComponent } from '../popupcomponent/popupcomponent.component';
 import { SubAdmin } from './subAdminInterface';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-addsubadmin',
@@ -18,7 +19,7 @@ export class AddsubadminComponent {
   payLoadToSend:any;
   datawithselectedprop:any;
   checkboxForm: FormGroup;
-  constructor(private fb: FormBuilder,private commonservice:CommonServiceService, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder,private commonservice:CommonServiceService, private dialog: MatDialog,private route:Router) { }
 
   ngOnInit(): void {
     
@@ -58,24 +59,25 @@ export class AddsubadminComponent {
     subAdmin.name = this.form.get('name')?.value;
     subAdmin.email_id=this.form.get('email')?.value;
     subAdmin.mobile_number=this.form.get('mobile')?.value;
+    // subAdmin.role_access=[];
     // subAdmin.level=this.form.get('level')?.value;
     // subAdmin.state=this.form.get('state')?.value;
-    subAdmin.role_access=this.role_accessbyme;
+    // subAdmin.role_access=this.role_accessbyme;
     // subAdmin.role_access = localStorage.getItem('roleAccess');
     console.log("subadminname",subAdmin.role_access)
-
-
+    localStorage.setItem('role_access',JSON.stringify(subAdmin))
+    
 
     if (this.form.valid) {
       // Form is valid, perform your submission logic here
       console.log(this.form.value);
       console.log("paylaod-data we are sending ",subAdmin)
-      this.commonservice.addRoleToSubadmin(subAdmin).subscribe((data)=>{
-        console.log("hey we have added the subadmin",data);
-        this.commonservice.getRoleToSubadmin(10,2,'admin').subscribe((data)=>{
-          console.log("we have successfully fetch the new added subadmin",data)
-        })
-      })
+      // this.commonservice.addRoleToSubadmin(subAdmin).subscribe((data)=>{
+      //   console.log("hey we have added the subadmin",data);
+      //   this.commonservice.getRoleToSubadmin(10,2,'admin').subscribe((data)=>{
+      //     console.log("we have successfully fetch the new added subadmin",data)
+      //   })
+      // })
       
       
       const dialogConfig = new MatDialogConfig();
@@ -93,6 +95,7 @@ export class AddsubadminComponent {
 
     // Handle dialog close event if needed
     dialogRef.afterClosed().subscribe(result => {
+      // this.route.navigateByUrl('user/subadmin');
       console.log('Dialog closed', result);
     });
     }
