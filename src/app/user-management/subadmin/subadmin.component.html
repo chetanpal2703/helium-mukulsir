@@ -31,9 +31,7 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="editSubAdmin(element)">
-            <mat-icon>edit</mat-icon>
-          </button>
+            <mat-icon [routerLink]="'/user/addsubadmin'" [queryParams]="{'id': element.id}">edit</mat-icon>
         </td>
       </ng-container>
   

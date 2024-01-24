@@ -45,6 +45,25 @@ export class SubadminComponent implements AfterViewInit{
   editSubAdmin(subAdmin: any) {
     // Handle edit action, e.g., navigate to edit page
     console.log('Edit SubAdmin:', subAdmin);
+    const queryParams = {
+      id: subAdmin // Replace 'yourIdValue' with the actual value of the ID you want to send
+    };
+
+    // Navigating with query parameters
+    // this.route.navigateByUrl('user/subadmin?' + this.serializeQueryParams(queryParams));
+    
+
     // You can navigate to the edit page or open a dialog for editing
+  }
+  private serializeQueryParams(params: any): string {
+    const queryParams = new URLSearchParams();
+    
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams.set(key, params[key]);
+      }
+    }
+    console.log(queryParams.toString(),"queryparams")
+    return queryParams.toString();
   }
 }

@@ -10,6 +10,7 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'subadmin',component:SubadminComponent},
   {path:'addsubadmin',component:AddsubadminComponent},
+
   {path:'registrationstaff',component:RegistrationstaffComponent}
 ];
 
