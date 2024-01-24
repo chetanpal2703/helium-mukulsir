@@ -16,6 +16,7 @@ import { AddsubadminComponent } from './addsubadmin/addsubadmin.component';
 import { PopupcomponentComponent } from './popupcomponent/popupcomponent.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { SaveEditPopupComponentComponent } from './save-edit-popup-component/save-edit-popup-component.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     PaginationPipe,
     AddsubadminComponent,
     PopupcomponentComponent,
+    SaveEditPopupComponentComponent,
   ],
   imports: [
     CommonModule,

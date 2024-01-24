@@ -54,7 +54,7 @@ export class AddsubadminComponent {
     console.log("selectedpropdata",this.datawithselectedprop)
   }
   onSubmit() {
-    
+    console.log("hi")
     let subAdmin = new SubAdmin();
     subAdmin.name = this.form.get('name')?.value;
     subAdmin.email_id=this.form.get('email')?.value;
@@ -72,12 +72,6 @@ export class AddsubadminComponent {
       // Form is valid, perform your submission logic here
       console.log(this.form.value);
       console.log("paylaod-data we are sending ",subAdmin)
-      // this.commonservice.addRoleToSubadmin(subAdmin).subscribe((data)=>{
-      //   console.log("hey we have added the subadmin",data);
-      //   this.commonservice.getRoleToSubadmin(10,2,'admin').subscribe((data)=>{
-      //     console.log("we have successfully fetch the new added subadmin",data)
-      //   })
-      // })
       
       
       const dialogConfig = new MatDialogConfig();

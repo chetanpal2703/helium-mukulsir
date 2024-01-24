@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { CommonServiceService } from 'src/app/services/common-service.service';
+import { SaveEditPopupComponentComponent } from '../save-edit-popup-component/save-edit-popup-component.component';
 
 interface MyObject {
   module?: number;
@@ -17,7 +18,7 @@ export class PopupcomponentComponent {
   payloaddata:any;
   role_access:any[] = [];
   singleobject:any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<PopupcomponentComponent>,private commonservice:CommonServiceService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<PopupcomponentComponent>,private commonservice:CommonServiceService,private dialog: MatDialog) {}
 
   get selectOptions() {
     return this.data.selectOptions;
@@ -29,7 +30,7 @@ export class PopupcomponentComponent {
     console.log("selectoptions",this.selectOptions)
     debugger
     this.selectOptions.forEach((data)=>{
-      debugger
+      // debugger
       if(data.selected){
         const obj: MyObject = {
           module: data.id,
@@ -44,10 +45,24 @@ export class PopupcomponentComponent {
       }
       if(data.selected)
         this.role_access.push(this.singleobject);
+        
     })
+    localStorage.setItem('editpayload',JSON.stringify(this.role_access))
     this.payloaddata.role_access=this.role_access;
     console.log("finalpayload",this.payloaddata)
     console.log("role_access",this.role_access);
+    // const saveEditDialogRef = this.dialog.open(SaveEditPopupComponentComponent);
+    // saveEditDialogRef.afterClosed().subscribe((result) => {
+    //   if (result === 'edit') {
+    //     // Handle "edit" logic (open the same PopupcomponentComponent)
+    //     this.dialogRef.close(); // Close the current popup
+    //     this.dialog.open(PopupcomponentComponent, {
+    //       data: this.data,
+    //     });
+    //   }
+    //   // Handle "save" logic if needed
+    // });
+
     // this.commonservice.addRoleToSubadmin(this.payloaddata).subscribe((data)=>{
     //   console.log("hey we have added the subadmin",data);
     //   this.commonservice.getRoleToSubadmin(10,2,'admin').subscribe((data)=>{
