@@ -17,7 +17,7 @@ import { PopupcomponentComponent } from './popupcomponent/popupcomponent.compone
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { SaveEditPopupComponentComponent } from './save-edit-popup-component/save-edit-popup-component.component';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { SaveEditPopupComponentComponent } from './save-edit-popup-component/sav
     ReactiveFormsModule,
     MatDialogModule,
     FormsModule,
+    MatIconModule
     
   ]
 })

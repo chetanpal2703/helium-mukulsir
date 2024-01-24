@@ -28,7 +28,7 @@ export class PopupcomponentComponent {
 
     console.log("localstorage",this.payloaddata)
     console.log("selectoptions",this.selectOptions)
-    debugger
+    // debugger
     this.selectOptions.forEach((data)=>{
       // debugger
       if(data.selected){
@@ -49,19 +49,10 @@ export class PopupcomponentComponent {
     })
     localStorage.setItem('editpayload',JSON.stringify(this.role_access))
     this.payloaddata.role_access=this.role_access;
+    localStorage.setItem('finalpayload',JSON.stringify(this.payloaddata))
     console.log("finalpayload",this.payloaddata)
     console.log("role_access",this.role_access);
-    // const saveEditDialogRef = this.dialog.open(SaveEditPopupComponentComponent);
-    // saveEditDialogRef.afterClosed().subscribe((result) => {
-    //   if (result === 'edit') {
-    //     // Handle "edit" logic (open the same PopupcomponentComponent)
-    //     this.dialogRef.close(); // Close the current popup
-    //     this.dialog.open(PopupcomponentComponent, {
-    //       data: this.data,
-    //     });
-    //   }
-    //   // Handle "save" logic if needed
-    // });
+    this.dialogRef.close();
 
     // this.commonservice.addRoleToSubadmin(this.payloaddata).subscribe((data)=>{
     //   console.log("hey we have added the subadmin",data);

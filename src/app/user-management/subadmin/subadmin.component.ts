@@ -14,7 +14,7 @@ export class SubadminComponent implements AfterViewInit{
   userInfo:any ;
   subAdmin: any[] = [];
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['id', 'name', 'username', 'mobile_number'];
+  displayedColumns: string[] = ['id', 'name', 'username', 'mobile_number','edit'];
   ngAfterViewInit() {
     console.log("userInfobyadmin",this.userInfo)
     this.dataSource.paginator = this.paginator;
@@ -41,5 +41,10 @@ export class SubadminComponent implements AfterViewInit{
 // https://campmanagementapidev.tsoft.co.in/v1/web_user_management/role_access_list/
     console.log("we are redirecting to addsubadmin page ")
     this.route.navigateByUrl('user/addsubadmin');
+  }
+  editSubAdmin(subAdmin: any) {
+    // Handle edit action, e.g., navigate to edit page
+    console.log('Edit SubAdmin:', subAdmin);
+    // You can navigate to the edit page or open a dialog for editing
   }
 }
