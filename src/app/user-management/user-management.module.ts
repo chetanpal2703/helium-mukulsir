@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { SaveEditPopupComponentComponent } from './save-edit-popup-component/save-edit-popup-component.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CampsComponent } from './camps/camps/camps.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     AddsubadminComponent,
     PopupcomponentComponent,
     SaveEditPopupComponentComponent,
+    CampsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -41,7 +45,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatDialogModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    NgxSpinnerModule
     
   ]
 })

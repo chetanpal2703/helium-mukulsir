@@ -71,5 +71,17 @@ export class CommonServiceService {
     .set('created_by',createdBy);
     return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/get_user_list',{params})
   }
+  updateAddSubadmin(payload:any){
+    return this.http.put('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/edit_subadmin/303/',payload)
+  }
+
+
+                            // CAMPSAPIFROMHERE
+  getCampDataTable(page:number,type:string):Observable<any>{
+    const params=new HttpParams()
+    .set('page',page)
+    .set('type',type)
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_camp/web_camp_list2',{params})
+  }
   
 }

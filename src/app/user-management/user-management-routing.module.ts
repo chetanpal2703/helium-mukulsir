@@ -4,12 +4,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SubadminComponent } from './subadmin/subadmin.component';
 import { RegistrationstaffComponent } from './registrationstaff/registrationstaff.component';
 import { AddsubadminComponent } from './addsubadmin/addsubadmin.component';
+import { CampsComponent } from './camps/camps/camps.component';
 
 
 const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'subadmin',component:SubadminComponent},
   {path:'addsubadmin',component:AddsubadminComponent},
+  {path:'camp',component:CampsComponent},
 
   {path:'registrationstaff',component:RegistrationstaffComponent}
 ];

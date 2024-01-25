@@ -3,6 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CommonServiceService } from 'src/app/services/common-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-subadmin',
@@ -21,7 +22,8 @@ export class SubadminComponent implements AfterViewInit{
     console.log("dataSource",this.dataSource);
     
   }
-  constructor(private commonservice:CommonServiceService,private route:Router){
+  constructor(private commonservice:CommonServiceService,private route:Router,private spinner:NgxSpinnerService){
+    this.spinner.show();
     this.userInfo = JSON.parse(localStorage.getItem('userInfo')) ;
     console.log("inside constructor of subdmin",this.userInfo.id)
     this.commonservice.getSubAdminList(this.userInfo.id, 3, this.userInfo.role.toLowerCase()).subscribe(
@@ -30,6 +32,7 @@ export class SubadminComponent implements AfterViewInit{
               this.subAdmin = response.data;
               this.dataSource = new MatTableDataSource<any>(this.subAdmin);
               this.dataSource.paginator = this.paginator;
+              this.spinner.hide();
             },
             (error) => {
               console.error(error);
@@ -44,26 +47,7 @@ export class SubadminComponent implements AfterViewInit{
   }
   editSubAdmin(subAdmin: any) {
     // Handle edit action, e.g., navigate to edit page
-    console.log('Edit SubAdmin:', subAdmin);
-    const queryParams = {
-      id: subAdmin // Replace 'yourIdValue' with the actual value of the ID you want to send
-    };
-
-    // Navigating with query parameters
-    // this.route.navigateByUrl('user/subadmin?' + this.serializeQueryParams(queryParams));
     
-
-    // You can navigate to the edit page or open a dialog for editing
   }
-  private serializeQueryParams(params: any): string {
-    const queryParams = new URLSearchParams();
-    
-    for (const key in params) {
-      if (params.hasOwnProperty(key)) {
-        queryParams.set(key, params[key]);
-      }
-    }
-    console.log(queryParams.toString(),"queryparams")
-    return queryParams.toString();
-  }
+  
 }

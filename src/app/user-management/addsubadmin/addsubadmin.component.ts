@@ -1,26 +1,66 @@
-import { Component } from '@angular/core';
+import { Component,AfterViewInit, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopupcomponentComponent } from '../popupcomponent/popupcomponent.component';
 import { SubAdmin } from './subAdminInterface';
 import {Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-addsubadmin',
   templateUrl: './addsubadmin.component.html',
   styleUrls: ['./addsubadmin.component.css']
 })
-export class AddsubadminComponent {
+export class AddsubadminComponent implements OnInit ,AfterViewInit{
+  id:any;
   form: FormGroup;
   indianStates: string[] = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
   accessRoles: any;
   datawithselectedprop:any;
   checkboxForm: FormGroup;
   finalpayloaddata:any;
-  constructor(private fb: FormBuilder,private commonservice:CommonServiceService, private dialog: MatDialog,private route:Router) { }
+  userInfo: any;
+  dataforedit:any;
+  singledataforshowingonform:any;
+  constructor(private fb: FormBuilder,private commonservice:CommonServiceService, private dialog: MatDialog,private route:Router,private Aroute: ActivatedRoute) { 
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo')) ;
+    console.log("inside constructor of addsubdmin",this.userInfo.id)
+    this.commonservice.getSubAdminList(this.userInfo.id, 3, this.userInfo.role.toLowerCase()).subscribe((responce)=>{
+      console.log("responce from addsubadmin ----edit",responce)
+      this.dataforedit=responce.data;
+      console.log(this.dataforedit,"dataforedit");
+      if(this.id){
+                           // foreditfunctinality
+          this.dataforedit.forEach((data)=>{
+            if(data.id==this.id){
+              this.singledataforshowingonform=data;
+              console.log(this.singledataforshowingonform,"singledataforshowingform")
+            }
+          })
+      }
+      if(this.id){
+        console.log("i'm inside the patchvalueprocess")
+        if(this.singledataforshowingonform){
+          this.form.patchValue({
+            name:this.singledataforshowingonform.name,
+            email:this.singledataforshowingonform.email,
+            mobile:this.singledataforshowingonform.mobile_number,
+          })
+        }
+      }
+
+
+    })
+  }
 
   ngOnInit(): void {
+    this.id = this.Aroute.snapshot.queryParams['id'];
+    console.log('ID from query parameter:', this.id);
+    console.log("insidengoninit",this.dataforedit)
+   
+
     this.commonservice.addSubadminData().subscribe((responce)=>{
       console.log("addsubadmindata",responce)
       this.accessRoles=responce;
@@ -41,6 +81,22 @@ export class AddsubadminComponent {
       level: ['', Validators.required],
       state: ['']
     });
+
+    // if(this.id){
+    //   console.log("i'm inside the patchvalueprocess")
+    //   if(this.singledataforshowingonform){
+    //     this.form.patchValue({
+    //       name:this.singledataforshowingonform.name,
+    //       email:this.singledataforshowingonform.email,
+    //       mobile:this.singledataforshowingonform.mobile_number,
+    //     })
+    //   }
+    // }
+
+
+  }
+  ngAfterViewInit(): void {
+      console.log("inside the afterviewinit",this.dataforedit)
   }
   onLevelChange() {
     console.log("inside this level onlevelchanges function")
@@ -51,6 +107,8 @@ export class AddsubadminComponent {
     console.log("selectedpropdata",this.datawithselectedprop)
   }
   onSubmit() {
+   
+    
     console.log("hi")
     let subAdmin = new SubAdmin();
     subAdmin.name = this.form.get('name')?.value;
@@ -93,8 +151,16 @@ export class AddsubadminComponent {
   }
 
   addingthesubadmin(){
+    
     this.finalpayloaddata=JSON.parse(localStorage.getItem('finalpayload'));
     console.log(this.finalpayloaddata,"finalpaylaod data");
+    if(this.id){
+      console.log("hiiiiiiiiiiiiiiiiiiiiiiiiii")
+      this.commonservice.updateAddSubadmin(this.finalpayloaddata).subscribe((data)=>{
+        console.log(data,"edit the addsubadmin")
+      })
+      return;
+    }
     this.commonservice.addRoleToSubadmin(this.finalpayloaddata).subscribe((data)=>{
       console.log("hey we have added the subadmin",data);
       this.commonservice.getRoleToSubadmin(10,2,'admin').subscribe((data)=>{

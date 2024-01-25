@@ -8,6 +8,7 @@ import { CommonServiceService } from './services/common-service.service';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonInterceptorInterceptor } from './interceptor/common-interceptor.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -29,6 +30,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
     MatToolbarModule,
     MatListModule,
     MatExpansionModule,
