@@ -1,0 +1,9 @@
+.camplogo{
+    height: 2vw;
+    width: 2vw;
+}
+.ongoingbtn{
+    color: rgb(44, 1, 1);
+    border: 2px solid rgb(241, 203, 203);
+    /* background-color: transparent; */
+}

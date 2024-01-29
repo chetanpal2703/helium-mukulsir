@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { SaveEditPopupComponentComponent } from './save-edit-popup-component/save-edit-popup-component.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CampsComponent } from './camps/camps/camps.component';
+import { AddcampComponent } from './camps/addcamp/addcamp.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CampsComponent } from './camps/camps/camps.component';
     PopupcomponentComponent,
     SaveEditPopupComponentComponent,
     CampsComponent,
+    AddcampComponent,
 
   ],
   imports: [

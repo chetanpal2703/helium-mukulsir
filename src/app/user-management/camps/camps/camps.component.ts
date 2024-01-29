@@ -17,4 +17,7 @@ export class CampsComponent {
       console.log("camptabledata",this.camptabledata);
     })
   }
+  addCamp(){
+    console.log("hey we are adding camp")
+  }
 }

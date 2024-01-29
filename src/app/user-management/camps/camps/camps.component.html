@@ -1,9 +1,9 @@
-
 <app-side-nav></app-side-nav>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <!-- <div class="mat-elevation-z8 navleftspace">
+  <div class="row">
+    <div class="col">
+      <h1 class="navleftspace">CAMPS MANAGEMENT</h1>
+      <!-- <div class="mat-elevation-z8 navleftspace">
                 <table mat-table [dataSource]="dataSource">
               
                   
@@ -50,7 +50,46 @@
               <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
                 
             </div> -->
-        </div>
+      <div class="navleftspace">
+        <button type="button" class="btn btn-outline-success" (click)="addCamp()">Success</button>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Camp Logo</th>
+              <th scope="col">Camps Title</th>
+              <th scope="col">Start Date & Start Time</th>
+              <th scope="col">End Date & End Time</th>
+              <th scope="col">City</th>
+              <th scope="col">Address</th>
+              <th scope="col">Status</th>
+              <th scope="col">Camp-Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let data of camptabledata; let i = index">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td><img src="{{data.camp_image}}" alt="" class="camplogo"></td>
+                <td>{{data.camp_title}}</td>
+                <td>{{data.start_date}}/{{data.start_time}}</td>
+                <td>{{data.end_date}} / {{data.end_time}}</td>
+                <td>{{data.city}}</td>
+                <td>{{data.area}} {{data.city}} {{data.state}}</td>
+                <td>{{data.camp_status}}</td>
+                <td [ngClass]="{'ongoingbtn':data.camp_status==='Ongoing'}">{{data.status?'active':'inactive'}}</td>
+              </tr>
+            </ng-container>
+
+
+          </tbody>
+        </table>
         
+      </div>
+
     </div>
+    
+
+  </div>
+ 
 </div>
