@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Route } from '@angular/router';
+import {  Router } from '@angular/router';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 @Component({
   selector: 'app-camps',
@@ -9,7 +9,7 @@ import { CommonServiceService } from 'src/app/services/common-service.service';
 export class CampsComponent {
   response:any
   camptabledata:any;
-  constructor(private commonservice:CommonServiceService ){
+  constructor(private commonservice:CommonServiceService,private route:Router ){
     this.commonservice.getCampDataTable(1,'admin').subscribe((responce)=>{
       console.log("responce",responce)
       this.response=responce;
@@ -19,5 +19,6 @@ export class CampsComponent {
   }
   addCamp(){
     console.log("hey we are adding camp")
+    this.route.navigateByUrl('user/addcamp')
   }
 }

@@ -1,1 +1,175 @@
-<p>addcamp works!</p>
+<app-side-nav></app-side-nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="navleftspace">CAMPS MANAGEMENT</h1>
+            <div class="navleftspace">
+                <form [formGroup]="addCampForm" (ngSubmit)="onSubmitForm()">
+                            <!-- first row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="camp-title" class="col-form-label">Camp Title<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                              <input type="text" formControlName="camp_title" id="camp_title" class="textinputfield"
+                                     [ngClass]="{ 'error': addCampForm.get('camp_title').hasError('required') && addCampForm.get('camp_title').touched }"
+                                     placeholder="Enter Camp Title here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('camp_title').hasError('required') && addCampForm.get('camp_title').touched"
+                                     class="error-message">
+                                     Please Enter Camp Title
+                              </small>
+                        </div>
+                          
+                        <div class="col-md-6">
+                            <label for="camp-logo" class="col-form-label">Camp Logo<span
+                                    class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="custom-file formfieldclass">
+                                    <img src="../../../../assets/images/upload-icon.png" alt="">
+                                    <input type="file" formControlName="camp_logo"
+                                        class="custom-file-input mycustominputfield"
+                                        accept="image/jpeg, image/jpg, image/png" required>
+                                    <!-- <label class="custom-file-label" for="camp_logo">No file chosen</label> -->
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Note: The photo size should not exceed 2mb. Supported
+                                formats are jpeg, jpg, png only.</small>
+                        </div>
+                    </div>
+
+                            <!-- second-row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <label for="organized-by" class="col-form-label">Organized By<span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('organized_by').hasError('required') && addCampForm.get('organized_by').touched}">
+                                    <mat-select formControlName="organized_by" placeholder="Select Organized By"
+                                        required>
+                                        <!-- Options... -->
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option2">Option 2</mat-option>
+                                        <!-- Add more options as needed -->
+                                    </mat-select>
+                                </div>
+                                <small *ngIf="addCampForm.get('organized_by').hasError('required') && addCampForm.get('organized_by').touched"
+                                     class="error-message">
+                                Please Enter Camp Title
+                              </small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="organized-by-img" class="col-form-label">Organized By Image<span
+                                    class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="custom-file formfieldclass">
+                                    <img src="../../../../assets/images/upload-icon.png" alt="">
+                                    <input type="file" formControlName="organizedbyimg"
+                                        class="custom-file-input mycustominputfield" id="camp_logo"
+                                        accept="image/jpeg, image/jpg, image/png" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                            <!-- third row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <label for="organized-by" class="col-form-label">Sponsor<span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('Sponsor').hasError('required') && addCampForm.get('Sponsor').touched}">
+                                    <mat-select formControlName="Sponsor" placeholder="Select Sponsor"
+                                        required>
+                                        <!-- Options... -->
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option2">Option 2</mat-option>
+                                        <!-- Add more options as needed -->
+                                    </mat-select>
+                                </div>
+                                <small *ngIf="addCampForm.get('Sponsor').hasError('required') && addCampForm.get('Sponsor').touched"
+                                     class="error-message">
+                                 Please Select Sponser by
+                              </small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="SponsorImage" class="col-form-label">Organized By Image<span
+                                    class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="custom-file formfieldclass">
+                                    <img src="../../../../assets/images/upload-icon.png" alt="">
+                                    <input type="file" formControlName="SponsorImage"
+                                        class="custom-file-input mycustominputfield" 
+                                        accept="image/jpeg, image/jpg, image/png" required>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Note: The photo size should not exceed 2mb. Supported
+                                formats are jpeg, jpg, png only.</small>
+                        </div>
+                    </div>
+                    <!-- fourth row -->
+                    <!-- <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label for="startdate" class="col-form-label">start date</label>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Start Date</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+                    </div> -->
+                    
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <div class="input-group" style="display: flex;flex-direction: column;">
+                                    <label for="startdate" class="col-form-label">Start Date</label>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Start Date</mat-label>
+                                        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
+                                        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #startDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                                <div class="input-group" style="display: flex;flex-direction: column;">
+                                    <label for="enddate" class="col-form-label">End Date</label>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>End Date</mat-label>
+                                        <input matInput [matDatepicker]="endDatePicker" formControlName="endDate">
+                                        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #endDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,6 +21,11 @@ import { SaveEditPopupComponentComponent } from './save-edit-popup-component/sav
 import { MatIconModule } from '@angular/material/icon';
 import { CampsComponent } from './camps/camps/camps.component';
 import { AddcampComponent } from './camps/addcamp/addcamp.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,12 @@ import { AddcampComponent } from './camps/addcamp/addcamp.component';
     MatDialogModule,
     FormsModule,
     MatIconModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatFormFieldModule
     
   ]
 })
