@@ -83,5 +83,8 @@ export class CommonServiceService {
     .set('type',type)
     return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_camp/web_camp_list2',{params})
   }
+  getCampAssignTest():Observable<any>{
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_master/get_test_master_listing/')
+  }
   
 }

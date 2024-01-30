@@ -110,30 +110,8 @@
                                 formats are jpeg, jpg, png only.</small>
                         </div>
                     </div>
-                    <!-- fourth row -->
-                    <!-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="startdate" class="col-form-label">start date</label>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Start Date</mat-label>
-                                    <input matInput [matDatepicker]="picker">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
-                            </div>
-                            
-                        </div>
-                        <div class="col-md-6">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                              </mat-form-field>
-                        </div>
-                    </div> -->
-                    
+                            <!-- fourth row -->
+                   
                     <div class="row" >
                         <div class="col-md-6">
                             <div class="col-md-6">
@@ -141,33 +119,499 @@
                                     <label for="startdate" class="col-form-label">Start Date</label>
                                     <mat-form-field appearance="fill">
                                         <mat-label>Start Date</mat-label>
-                                        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
+                                        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" required
+                                        [ngClass]="{ 'error': addCampForm.get('startDate').hasError('required') && addCampForm.get('startDate').touched }">
                                         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
                                         <mat-datepicker #startDatePicker></mat-datepicker>
                                     </mat-form-field>
                                 </div>
+                                <small *ngIf="addCampForm.get('startDate').hasError('required') && addCampForm.get('startDate').touched"
+                                class="error-message">
+                                Please Enter Start Date
+                                </small>
                             </div>
                             
                         </div>
                         <div class="col-md-6">
                             <div class="col-md-6">
-                                <div class="input-group" style="display: flex;flex-direction: column;">
+                                <div class="input-group "  style="display: flex;flex-direction: column;" >
                                     <label for="enddate" class="col-form-label">End Date</label>
                                     <mat-form-field appearance="fill">
                                         <mat-label>End Date</mat-label>
-                                        <input matInput [matDatepicker]="endDatePicker" formControlName="endDate">
+                                        <input matInput [matDatepicker]="endDatePicker" formControlName="endDate" required
+                                        [ngClass]="{ 'error': addCampForm.get('endDate').hasError('required') && addCampForm.get('endDate').touched }">
                                         <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
                                         <mat-datepicker #endDatePicker></mat-datepicker>
                                     </mat-form-field>
                                 </div>
+                                <small *ngIf="addCampForm.get('endDate').hasError('required') && addCampForm.get('endDate').touched"
+                                class="error-message">
+                                Please Enter End Date
+                                </small>
                             </div>
                             
                         </div>
                     </div>
-                    
-                    
 
-                    <input class="btn btn-primary" type="submit" value="Submit">
+
+                    
+                      
+                      
+
+                   <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="input-group" style="display: flex;flex-direction: column;">
+                                <label for="start-time" class="col-form-label">Start Time</label>
+                                <input placeholder="Select Start time" formControlName="startTime" aria-label="12hr format" [ngxTimepicker]="startTimePicker" readonly required
+                                [ngClass]="{ 'error': addCampForm.get('startTime').hasError('required') && addCampForm.get('startTime').touched }">
+                                <ngx-material-timepicker #startTimePicker></ngx-material-timepicker>
+                              </div>
+                              <small *ngIf="addCampForm.get('startTime').hasError('required') && addCampForm.get('startTime').touched"
+                                     class="error-message">
+                                     Please Enter Start Time
+                              </small>
+                        </div>
+                      
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="input-group" style="display: flex;flex-direction: column;">
+                                <label for="end-time" class="col-form-label">End Time</label>
+                                <input placeholder="Select End time" formControlName="endTime" aria-label="12hr format" [ngxTimepicker]="endTimePicker" readonly required
+                                [ngClass]="{ 'error': addCampForm.get('endTime').hasError('required') && addCampForm.get('endTime').touched }">
+                                <ngx-material-timepicker #endTimePicker></ngx-material-timepicker>
+                            </div>
+                            <small *ngIf="addCampForm.get('endTime').hasError('required') && addCampForm.get('endTime').touched"
+                                     class="error-message">
+                                     Please Enter End Time
+                              </small>
+                        </div>
+                      
+                    </div>
+                  </div>
+                  
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-6">
+                              <label for="country" class="col-form-label">Country<span class="text-danger">*</span></label>
+                              <div class="input-group inputinitialborder" >
+                                <mat-select formControlName="country" placeholder="Select Country">
+                                  <mat-option value="India" disabled>India</mat-option>
+                                </mat-select>
+                              </div>
+    
+                            </div>
+                          </div>
+                          
+                          
+                  
+                          <div class="col-md-6">
+                            <div class="col-md-6">
+                                <label for="state" class="col-form-label">Organized By<span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('state').hasError('required') && addCampForm.get('state').touched}">
+                                    <mat-select formControlName="state" placeholder="Select Organized By"
+                                        required>
+                                        <!-- Options... -->
+                                        <mat-option value="option1">Option 1</mat-option>
+                                        <mat-option value="option2">Option 2</mat-option>
+                                        <!-- Add more options as needed -->
+                                    </mat-select>
+                                </div>
+                                <small *ngIf="addCampForm.get('state').hasError('required') && addCampForm.get('state').touched"
+                                     class="error-message">
+                                Please Enter Camp Title
+                              </small>
+                            </div>
+                        </div>
+                </div>
+                  
+                                           <!-- row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="City" class="col-form-label">City<span
+                                    class="text-danger">*</span></label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('City').hasError('required') && addCampForm.get('City').touched}">
+                                <mat-select formControlName="City" placeholder="Select City By"
+                                    required>
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('City').hasError('required') && addCampForm.get('City').touched"
+                                    class="error-message">
+                            Please Enter City 
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="Area" class="col-form-label">Area<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="text" formControlName="Area" id="camp_title" class="textinputfield"
+                                    [ngClass]="{ 'error': addCampForm.get('Area').hasError('required') && addCampForm.get('Area').touched }"
+                                    placeholder="Enter Area here..." required>
+                        </div>
+                        <small *ngIf="addCampForm.get('Area').hasError('required') && addCampForm.get('Area').touched"
+                                    class="error-message">
+                                    Please Enter Area
+                            </small>
+                    </div>
+                </div>
+
+                                 <!-- row -->
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="PINCode" class="col-form-label">PIN Code<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="PINCode" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('PINCode').hasError('required') && addCampForm.get('PINCode').touched }"
+                                        placeholder="Enter PIN Code  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('PINCode').hasError('required') && addCampForm.get('PINCode').touched"
+                                        class="error-message">
+                                        Please Enter PIN Code
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignStateSubadmin" class="col-form-label">Assign State Subadmin</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignStateSubadmin').hasError('required') && addCampForm.get('AssignStateSubadmin').touched}">
+                              <mat-select formControlName="AssignStateSubadmin" placeholder="Select Assign State Subadmin" multiple>
+                                <mat-option *ngFor="let city of stateSubadmin" [value]="city">{{ city }}</mat-option>
+                              </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignStateSubadmin').hasError('required') && addCampForm.get('AssignStateSubadmin').touched"
+                                   class="error-message">
+                              Please Enter State Subadmin
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignCitySubadmin" class="col-form-label">Assign City Subadmin</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignCitySubadmin').hasError('required') && addCampForm.get('AssignCitySubadmin').touched}">
+                              <mat-select formControlName="AssignCitySubadmin" placeholder="Select Assign City Subadmin" multiple>
+                                <mat-option *ngFor="let city of citySubadmin" [value]="city">{{ city }}</mat-option>
+                              </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignCitySubadmin').hasError('required') && addCampForm.get('AssignCitySubadmin').touched"
+                                   class="error-message">
+                              Please Enter City Subadmin
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignCampSubadmin" class="col-form-label">Assign Camp Subadmin</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignCampSubadmin').hasError('required') && addCampForm.get('AssignCampSubadmin').touched}">
+                              <mat-select formControlName="AssignCampSubadmin" placeholder="Select Assign State Subadmin" multiple>
+                                <mat-option *ngFor="let city of campSubadmin" [value]="city">{{ city }}</mat-option>
+                              </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignCampSubadmin').hasError('required') && addCampForm.get('AssignCampSubadmin').touched"
+                                   class="error-message">
+                              Please Enter Camp Subadmin
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignnoofDoctor" class="col-form-label">Assign No. of Doctor<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="AssignnoofDoctor" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('AssignnoofDoctor').hasError('required') && addCampForm.get('AssignnoofDoctor').touched }"
+                                        placeholder="Enter No. of Doctor  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignnoofDoctor').hasError('required') && addCampForm.get('AssignnoofDoctor').touched"
+                                        class="error-message">
+                                        Please Enter No. Of Doctor
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignDoctor" class="col-form-label">Assign Doctor</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignDoctor').hasError('required') && addCampForm.get('AssignDoctor').touched}">
+                                <mat-select formControlName="AssignDoctor" placeholder="Assign Doctor"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignDoctor').hasError('required') && addCampForm.get('AssignDoctor').touched"
+                                    class="error-message">
+                            Please Assign Doctor 
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignNoofRegistrationStaff" class="col-form-label">Assign No. of Registration Staff<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="AssignNoofRegistrationStaff" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('AssignNoofRegistrationStaff').hasError('required') && addCampForm.get('AssignNoofRegistrationStaff').touched }"
+                                        placeholder="Enter No.of Registration Staff..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignNoofRegistrationStaff').hasError('required') && addCampForm.get('AssignNoofRegistrationStaff').touched"
+                                        class="error-message">
+                                        Please Enter No. Of Registratio nStaff
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignRegistrationStaff" class="col-form-label">Assign Registration Staff</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignTechnicians').hasError('required') && addCampForm.get('AssignTechnicians').touched}">
+                                <mat-select formControlName="AssignRegistrationStaff" placeholder="Assign Registration Staff"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignRegistrationStaff').hasError('required') && addCampForm.get('AssignRegistrationStaff').touched"
+                                    class="error-message">
+                            Please Assign Registration Staff
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row -->
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignNoofTechnicians" class="col-form-label">Assign No. of Technicians<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="AssignNoofTechnicians" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('AssignNoofTechnicians').hasError('required') && addCampForm.get('AssignNoofTechnicians').touched }"
+                                        placeholder="Enter No. of Doctor  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignNoofTechnicians').hasError('required') && addCampForm.get('AssignNoofTechnicians').touched"
+                                        class="error-message">
+                                        Please Enter No. Of Technicians
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignTechnicians" class="col-form-label">Assign Technicians</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignTechnicians').hasError('required') && addCampForm.get('AssignTechnicians').touched}">
+                                <mat-select formControlName="AssignTechnicians" placeholder="Assign Technicians"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignTechnicians').hasError('required') && addCampForm.get('AssignTechnicians').touched"
+                                    class="error-message">
+                            Please Assign Technicians
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignNoofDispensers" class="col-form-label">Assign No. of Dispensers<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="AssignNoofDispensers" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('AssignNoofDispensers').hasError('required') && addCampForm.get('AssignNoofDispensers').touched }"
+                                        placeholder="Enter No. of Dispensers  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignNoofDispensers').hasError('required') && addCampForm.get('AssignNoofDispensers').touched"
+                                        class="error-message">
+                                        Please Enter No. Of Dispensers
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignDispensers" class="col-form-label">Assign Dispensers</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignTechnicians').hasError('required') && addCampForm.get('AssignTechnicians').touched}">
+                                <mat-select formControlName="AssignDispensers" placeholder="Assign Dispensers"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignDispensers').hasError('required') && addCampForm.get('AssignDispensers').touched"
+                                    class="error-message">
+                            Please Assign Dispensers
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignNoofMobilizer" class="col-form-label">Assign No. of Mobilizer<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="AssignNoofMobilizer" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('AssignNoofMobilizer').hasError('required') && addCampForm.get('AssignNoofMobilizer').touched }"
+                                        placeholder="Enter No. of Dispensers  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignNoofMobilizer').hasError('required') && addCampForm.get('AssignNoofMobilizer').touched"
+                                        class="error-message">
+                                        Please Enter No. of Mobilizer
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="AssignMobilizer" class="col-form-label">Assign Mobilizer</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('AssignTechnicians').hasError('required') && addCampForm.get('AssignTechnicians').touched}">
+                                <mat-select formControlName="AssignMobilizer" placeholder="Assign Mobilizer"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('AssignMobilizer').hasError('required') && addCampForm.get('AssignMobilizer').touched"
+                                    class="error-message">
+                            Please Assign Mobilizer
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="NoofScreening" class="col-form-label">Assign No. of Screening<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="NoofScreening" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('NoofScreening').hasError('required') && addCampForm.get('NoofScreening').touched }"
+                                        placeholder="Enter No. of Screening  here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('NoofScreening').hasError('required') && addCampForm.get('NoofScreening').touched"
+                                        class="error-message">
+                                        Please Enter No. of Screening
+                                </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label for="CreateABHAID" class="col-form-label">Assign Mobilizer</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('CreateABHAID').hasError('required') && addCampForm.get('CreateABHAID').touched}">
+                                <mat-select formControlName="CreateABHAID" placeholder="Create ABHA ID"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">YES</mat-option>
+                                    <mat-option value="option2">NO</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('CreateABHAID').hasError('required') && addCampForm.get('CreateABHAID').touched"
+                                    class="error-message">
+                             Please Create ABHA ID
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                          <label for="description" class="col-form-label">Short Description<span class="text-danger">*</span></label>
+                          <div class="input-group">
+                            <textarea formControlName="description" id="description" class="textinputfield" rows="4" placeholder="Enter Short Description here..." required></textarea>
+                          </div>
+                          <small *ngIf="addCampForm.get('description').hasError('required') && addCampForm.get('description').touched"
+                                 class="error-message">
+                            Please Enter Short Description
+                          </small>
+                        </div>
+                      </div>
+                      
+                </div>
+
+                <div class="row">
+                    <h1>Assign Test</h1>
+                    <div class="col-md-4">
+                        <label for="Test" class="col-form-label">1. Test</label>
+                            <div class="input-group inputinitialborder" [ngClass]="{'error': addCampForm.get('Test').hasError('required') && addCampForm.get('Test').touched}">
+                                <mat-select formControlName="Test" placeholder=" Test"
+                                    >
+                                    <!-- Options... -->
+                                    <mat-option value="option1">YES</mat-option>
+                                    <mat-option value="option2">NO</mat-option>
+                                    <!-- Add more options as needed -->
+                                </mat-select>
+                            </div>
+                            <small *ngIf="addCampForm.get('Test').hasError('required') && addCampForm.get('Test').touched"
+                                    class="error-message">
+                             Please Create Test
+                            </small>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Price" class="col-form-label">Price (INR)<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="Price" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('Price').hasError('required') && addCampForm.get('Price').touched }"
+                                        placeholder="Enter No. of Price here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('Price').hasError('required') && addCampForm.get('Price').touched"
+                                        class="error-message">
+                                        Please Enter Price (INR)
+                                </small>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="NoofScreeningassigntest" class="col-form-label">No. of Screening<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" formControlName="NoofScreeningassigntest" id="camp_title" class="textinputfield"
+                                        [ngClass]="{ 'error': addCampForm.get('NoofScreeningassigntest').hasError('required') && addCampForm.get('NoofScreeningassigntest').touched }"
+                                        placeholder="Enter No. of Screening here..." required>
+                            </div>
+                            <small *ngIf="addCampForm.get('NoofScreeningassigntest').hasError('required') && addCampForm.get('NoofScreeningassigntest').touched"
+                                        class="error-message">
+                                        Please Enter No of Screening
+                            </small>
+                    </div>
+
+                    <div class="col-md-4">
+                        <button style="justify-content: center; margin-top: 20px;" class="btn btn-success" type="button" [disabled]="!areSpecificFieldsSelected()">Add Test</button>
+                    </div>
+
+
+                </div>
+                
+
+                    <input style="margin-top: 50px;" class="btn btn-primary" type="submit" value="save">
                 </form>
             </div>
         </div>

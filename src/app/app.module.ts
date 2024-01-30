@@ -35,7 +35,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatListModule,
     MatExpansionModule,
     MatSidenavModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
   ],
   providers: [CommonServiceService,
     {
