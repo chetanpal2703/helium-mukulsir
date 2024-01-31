@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 
 
@@ -68,6 +68,7 @@ export class AddcampComponent implements OnInit {
       Test: ['', Validators.required],
       Price: ['', Validators.required],
       NoofScreeningassigntest: ['', Validators.required],
+      tests: this.fb.array([]),
     })
     // getting the assign test 
     this.commonservice.getCampAssignTest().subscribe((test)=>{
@@ -94,6 +95,8 @@ export class AddcampComponent implements OnInit {
 
     console.log(this.addCampForm.get('startDate'),"start date")
   }
+
+  
 
   onGetCity(state: any){
     console.log(state.id);
