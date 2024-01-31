@@ -86,5 +86,32 @@ export class CommonServiceService {
   getCampAssignTest():Observable<any>{
     return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_master/get_test_master_listing/')
   }
-  
+  getCampStateList(country_id:number):Observable<any>{
+    const params=new HttpParams()
+    .set('country_id',country_id)
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/app_urls/state_list',{params})
+  }
+
+  getCampUserList(roles_id:number,type:string):Observable<any>{
+    const params=new HttpParams()
+    .set('roles_id',roles_id)
+    .set('type',type)
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/get_user_list/',{params})
+  }
+  getCampCity(id:number){
+    const params=new HttpParams()
+    .set('state_id',id)
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/app_urls/city_list/',{params})
+  }
+  getCampRemainingData(roles_id:number,type:string,city_id:number):Observable<any>{
+    const params=new HttpParams()
+    .set('roles_id',roles_id)
+    .set('type',type)
+    .set('city_id',city_id)
+    return this.http.get('https://campmanagementapidev.tsoft.co.in/v1/web_user_management/get_user_list/',{params})
+  }
+  uploadImage(data:FormData){
+    console.log(data)
+    return this.http.post('https://campmanagementapidev.tsoft.co.in/v1/web_camp/upload_camp_image/',data)
+  }
 }
